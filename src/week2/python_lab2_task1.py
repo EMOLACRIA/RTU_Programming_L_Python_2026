@@ -53,35 +53,49 @@ Examples (these are also used to check your work):
 
 def average(values: list[float]) -> float:
     """Return the average of values, or 0.0 for an empty list."""
-    # TODO: implement
-    raise NotImplementedError("average() is not implemented yet")
+    if not values:
+        return 0.0
+    return sum(values) / len(values)
 
 
 def largest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the largest population."""
-    # TODO: implement
-    raise NotImplementedError("largest_city() is not implemented yet")
+    if not populations:
+        return ("", 0)
+    name = max(populations, key=populations.get)
+    return (name, populations[name])
 
 
 def smallest_city(populations: dict[str, int]) -> tuple[str, int]:
     """Return (city, population) for the city with the smallest population."""
-    # TODO: implement
-    raise NotImplementedError("smallest_city() is not implemented yet")
+    if not populations:
+        return ("", 0)
+    name = min(populations, key=populations.get)
+    return (name, populations[name])
 
 
 def total_population(populations: dict[str, int]) -> int:
     """Return the sum of all populations."""
-    # TODO: implement
-    raise NotImplementedError("total_population() is not implemented yet")
+    return sum(populations.values())
 
 
 if __name__ == "__main__":
     # Keep all input() and print() calls inside this block, otherwise the
     # autograder cannot import your file.
 
-    # TODO: Create your own datasets - up to you to fill in the data
-    temperatures = []
-    city_population = {}
+    temperatures = [2.5, 4.0, 3.5, 6.0, 5.5, 4.5, 4.0]
+    city_population = {
+        "Istanbul": 15650000,
+        "Ankara": 5800000,
+        "Izmir": 4480000,
+        "Bursa": 3200000,
+        "Antalya": 2620000,
+        "Bayburt": 85000,
+    }
 
-    # TODO: call the functions above and print the results
-    pass
+    print(f"Average temperature: {average(temperatures):.1f}")
+    big_name, big_pop = largest_city(city_population)
+    print(f"Largest city: {big_name} - {big_pop}")
+    small_name, small_pop = smallest_city(city_population)
+    print(f"Smallest city: {small_name} - {small_pop}")
+    print(f"Total population: {total_population(city_population)}")
